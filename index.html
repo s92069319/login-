@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thakshi</title>
+    <link rel="stylesheet" href="font/css/all.css">
+    <link rel="stylesheet" href="font/css/fontawesome.min.css">
+
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,input{
+    font-family: sans-serif;
+}
+.container:before{
+    content: '';
+    position: absolute;
+    width: 2000px;
+    height: 2000px;
+    border-radius: 50%;
+    background: linear-gradient(#0295A9,#06b3ca);
+    top: -10%;
+    right: 48%;
+    transform: translateY(-50%);
+    z-index: 6;
+    transition: 1.8s ease-in-out;
+}
+.container{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color:#fff;
+    overflow: hidden;
+}
+
+.forms-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.signin-signup{
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr;
+    z-index: 5;
+    transition: 1s 0.7s ease-in-out;
+}
+
+
+form{
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    justify-content: center;
+    flex-direction: column;
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+form.sign-in-form{
+    z-index: 2;
+}
+form.sign-up-form{
+    z-index: 1;
+    opacity: 0;
+}
+
+.title{
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color:#0295A9;
+}
+
+.input-field{
+    max-width: 380px;
+    width: 100%;
+    height: 55px;
+    background-color:#f0f0f0;
+    margin:10px 0;
+    border-radius: 28px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0.4rem;
+}
+
+.input-field i{
+    text-align: center;
+    line-height: 55px;
+    color:gray;
+}
+
+.input-field input{
+    background:none;
+    border: none;
+    outline: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.input-field input::placeholder{
+    font-weight: 500;
+}
+
+.btn{
+    width: 16%;
+    height: 30px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #0295A9;
+    outline: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.5s;
+}
+
+.btn:hover{
+    background-color: #06b3ca;
+}
+
+.social-text{
+    padding:.7rem 0;
+    font-size: 1rem;
+}
+
+.social-media{
+    display: flex;
+}
+
+.social-icon{
+    height: 46px;
+    width: 46px;
+    border: 1px solid #0295A9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #0295A9;
+    border-radius: 50%;
+    transition: .3s;
+    margin-right: 10px;
+}
+
+.social-icon:hover{
+    background-color: #0295A9;
+    color: white;
+}
+
+.panels-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.panel{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    text-align: center;
+    z-index: 7;
+}
+
+.left-panel{
+    padding: 3rem 17% 2rem 12%;
+    align-items: center;
+    pointer-events: all;
+}
+
+.right-panel{
+    padding: 3rem 12% 2rem 17%;;
+    pointer-events: none;
+}
+
+.panel .content{
+    color: #fff;
+    transition: .9s ,.6s ease-in-out;
+    padding: 10px;
+}
+
+.panel h3{
+    font-size:50px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.panel p{
+    font-size: 20px;
+    margin: 10px;
+}
+.btn.transparent{
+    margin: 0;
+    background: none;
+    border: 2px solid #fff;
+    width: 130px;
+    height: 41px;
+    font-size: 20px;
+}
+.btn.transparent:hover{
+    background-color: white;
+    color: #0295A9;
+}
+.right-panel .content{
+    transform: translateX(800px);
+}
+
+.container.sign-up-mode:before{
+    transform: translate(100%,-50%);
+    right: 52%;
+}
+
+.container.sign-up-mode .left-panel .content{
+    transform: translate(-800px)
+}
+
+.container.sign-up-mode .right-panel .content{
+    transform: translate(0px);
+}
+
+.container.sign-up-mode .left-panel {
+    pointer-events: none;
+}
+
+.container.sign-up-mode .right-panel {
+    pointer-events: all;
+}
+
+.container.sign-up-mode .signin-signup {
+    left: 25%;
+}
+
+.container.container.sign-up-mode form.sign-in-form{
+    z-index: 1;
+    opacity: 0;
+}
+
+.container.container.sign-up-mode form.sign-up-form{
+    z-index: 2;
+    opacity: 1;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form action="" class="sign-in-form">
+                    <h2 class="title">Sign in</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i><input type="text" placeholder="Username">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i><input type="password" placeholder="Password">
+                    </div>
+                    <input type="submit" value="LOGIN" class="btn solid">
+                    <p class="social-text">Or Sign in with social platforms</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </form>
+
+
+
+
+                <form action="" class="sign-up-form">
+                    <h2 class="title">Sign Up</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i><input type="text" placeholder="Username">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i><input type="password" placeholder="Email">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i><input type="password" placeholder="Password">
+                    </div>
+                    <input type="submit" value="SIGN UP" class="btn solid">
+                    <p class="social-text">Or Sign up with social platforms</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+
+
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>New here ?</h3>
+                    <p><b>Create An Account</b></p>
+                    <button class="btn transparent" id="sign-up-btn">Sign Up</button>
+                </div>
+            </div>
+
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>One of us</h3>
+                    <p><b>WELCOME BACK LOGIN TO ACCESS THE<br><i>BOOK HUB</i></b></p>
+                    <button class="btn transparent" id="sign-in-btn">Sign In</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+    <script>
+        const sign_in_btn = document.querySelector('#sign-in-btn');
+const sign_up_btn = document.querySelector('#sign-up-btn');
+const container = document.querySelector(".container");
+
+sign_up_btn.addEventListener('click',()=>{
+    container.classList.add("sign-up-mode");
+});
+
+sign_in_btn.addEventListener('click',()=>{
+    container.classList.remove("sign-up-mode");
+});
+    </script>
+
+</body>
+</html>
